@@ -1,6 +1,6 @@
 "use client"
 import { createContext, useContext } from 'react';
-import { CountContext, ThemeContext } from '../layout';
+import { CountContext, ThemeContext } from './layout';
 
 export default function Home() {
     // const count = useContext(CountContext)
