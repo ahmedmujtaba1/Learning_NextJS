@@ -1,7 +1,10 @@
 const getData = async () => {
-  const res = await fetch("https://simple-books-api.glitch.me/books/", {
+  const res = await fetch("https://api.quotable.io/random?tags=technology", {
     method: "GET",
-    cache: "no-store",
+    next: {
+        revalidate: 5
+    }
+    // cache: "no-store",
   });
   console.log(res);
   const data = await res.json();
