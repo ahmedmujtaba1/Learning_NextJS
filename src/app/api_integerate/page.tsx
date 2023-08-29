@@ -22,7 +22,7 @@ export default async function Home() {
     <>
       {data.map((book) => {
         return (
-            <h1>{book.name}</h1>
+            <h1 key={book.id}>{book.name}</h1>
         )
       })}
     </>
