@@ -1,33 +1,16 @@
-const getData = async () => {
-  const res = await fetch("https://api.quotable.io/random?tags=technology", {
-    method: "GET",
-    next: {
-        revalidate: 5
-    }
-    // cache: "no-store",
-  });
-  console.log(res);
-  const data = await res.json();
-    return data;
+"use client";
+import useSWR from "swr";
 
-  }
+const url = "https://api.quotable.io/random?tags=technology";
 
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
-// interface IBook {
-//   id: number;
-//   name: string;
-//   type: string;
-//   avaliable: boolean;
-// }
+export default function Home() {
+  const { data, error, isLoading } = useSWR(url, fetcher);
 
-interface IQuote {
-    content: string,
-}
+  if (error) return <div>failed to load</div>;
 
-export default async function Home() {
-  //   const data: IBook[] = await getBooksData();
-  const quote:IQuote = await getData();
-  console.log(quote);
-  
-  return <div>{quote.content}</div>;
+  if (isLoading) return <div>loading...</div>;
+
+  return <div>{data.content}</div>;
 }
