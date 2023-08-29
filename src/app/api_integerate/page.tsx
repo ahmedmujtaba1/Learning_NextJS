@@ -1,7 +1,10 @@
-export const getBooksData = async () => {
-  const res = await fetch("https://simple-books-api.glitch.me/books/");
+const getBooksData = async () => {
+  const res = await fetch("https://simple-books-api.glitch.me/books/", {
+    method: "GET",
+    cache : "no-store",
+  });
   console.log(res);
-  if (res.ok) {
+  if (!res.ok) {
     console.log("Failed error to fetch Data");
 
     const data = await res.json();
