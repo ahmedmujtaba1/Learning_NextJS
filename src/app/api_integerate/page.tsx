@@ -1,5 +1,5 @@
 const getData = async () => {
-    const res = await fetch("http s://simple-books-api.glitch.me/books/")
+    const res = await fetch("https://simple-books-api.glitch.me/books/")
     const data = await res.json()
     return data
 }
