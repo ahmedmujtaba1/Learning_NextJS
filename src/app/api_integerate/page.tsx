@@ -1,14 +1,14 @@
-const getData = async () => {
+export const getBooksData = async () => {
     const res = await fetch("https://simple-books-api.glitch.me/books/")
-    const data = await res.json()
-    return data
+    console.log(res);
 }
 
+
 export default async function Home() {
-    const data = await getData()
+    const data = await getBooksData()
     return(
         <>
-        testing {data[1].name}
+        testing {data}
         </>
     )
 }
